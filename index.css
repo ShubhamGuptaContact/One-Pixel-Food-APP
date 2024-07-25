@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid;
+    background: #000;
+    color: aliceblue;
+}
+
+.header .logo-image h1{
+    font-size: 50px;
+    padding: 20px;
+}
+
+.nav-items ul{
+    display: flex;
+}
+.nav-items ul li{
+    padding: 20px;
+    font-size: 30px;
+    list-style: none;
+    /* background: #000; */
+}
