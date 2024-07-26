@@ -26,3 +26,18 @@
     list-style: none;
     /* background: #000; */
 }
+.food-card{
+    width: 200px;
+    height: 300px;
+    border: 2px solid #000;
+    background-color: rgb(138, 201, 143);
+    margin: 20px;
+    padding: 5px;
+}
+.food-card img{
+    width: 100%;
+}
+.food-con{
+    display: flex;
+    flex-wrap: wrap;
+}
