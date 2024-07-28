@@ -1,14 +1,16 @@
 import React from 'react'
-
+import { IMG_URL } from '../utils/constant'
 function FoodCard(props) {
+    const { info } = props;
     return (
         <div className="food-card">
             <div className="img">
-                <img src="https://images.unsplash.com/photo-1430163393927-3dab9af7ea38?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-" alt="img" />
+                <img src={IMG_URL + info?.cloudinaryImageId} alt="img" />
             </div>
-            <h3>Name: {props?.name}</h3>
-            <h3>Rate: {props?.rating}</h3>
+            <dir className="text-card">
+                <h3>{info?.name}</h3>
+                <h1>{info?.avgRating}</h1>
+            </dir>
         </div>
     )
 }
