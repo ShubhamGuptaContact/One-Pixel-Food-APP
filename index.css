@@ -56,3 +56,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.serarch-bar{
+    width: 50%;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #569e14;
+}

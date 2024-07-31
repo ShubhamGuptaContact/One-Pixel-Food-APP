@@ -6,6 +6,7 @@ function Header() {
             <div className="logo-image">
                 <h1>FOA</h1>
             </div>
+            
             <div className="nav-items">
                 <ul>
                     <li>Home</li>

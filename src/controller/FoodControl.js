@@ -1,7 +1,6 @@
-import React from 'react';
-
 import Header from '../view/Header.js';
 import Container from '../view/Container.js';
+
 
 
 function FoodControl() {
@@ -12,5 +11,7 @@ function FoodControl() {
         </div>
     )
 }
+
+
 
 export default FoodControl
