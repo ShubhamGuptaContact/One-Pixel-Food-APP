@@ -6,26 +6,37 @@
 
 .header {
     display: flex;
-    margin: 2px;
     justify-content: space-between;
     /* border: 2px solid; */
     background: #9cf14d3b;
 }
 
 .header .logo-image h1{
-    font-size: 50px;
-    padding: 10px;
+    font-size: 35px;
+    padding: 3px;
 }
 
 .nav-items ul{
     display: flex;
+    justify-content: center;
+    align-items: end;
 }
-.nav-items ul li{
-    padding: 20px;
+.nav-items ul .li{
+    padding: 5px 10px;
     font-size: 30px;
     list-style: none;
+    text-decoration: none;
+    color: #000;
     /* background: #000; */
 }
+
+.nav-items ul .li:hover{
+    background: #9cf14d;
+    color: #fff;
+}
+
+
+
 .food-card, .load-card{
     width: 250px;
     background-color: #f0f0f0;
@@ -56,9 +67,72 @@
     justify-content: space-between;
     align-items: center;
 }
-.serarch-bar{
+.food-bar{
+    position: sticky;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+.search-bar {
     width: 50%;
     margin: 5px;
     padding: 10px;
-    border: 2px solid #569e14;
+    padding: 0;
+    background: #fff;
+    height: 30px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(40, 44, 63, .2);
+}
+.dishes-cards{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
+    padding: 0px 16px 16px;
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+}
+
+.rest-detils-card{
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(222, 209, 209);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid rgba(2, 6, 12, 0.15);
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 8px 16px 0px;
+}
+
+.avg-text{
+    display: flex;
+    margin: 20px 10px;
+}
+.avg-text li {
+    margin-left: 10px;
+}
+.cuisines-text{
+    display: flex;
+    margin: 0 10px;
+    text-decoration:underline;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    color: rgb(255, 82, 0);
+}
+
+.food-link{
+    text-decoration: none;
+    color: #000;
+}
+.food-link:hover{
+    color: #9cf14d;
+}
+
+.active{
+    background: #9cf14d;
+    color: #fff;
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Foodcard from './FoodCard';
-import { SWIGGI_URL } from '../utils/constant';
 import Shimmer from './Shimmer';
-
+import {Link} from "react-router-dom"
+import useFetchRestData from '../api/useFetchRestData';
 function Container() {
 
     const [foodList, setFoodList] = useState([]);
@@ -10,32 +10,19 @@ function Container() {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(SWIGGI_URL);
-            console.log(response)
-            const jsonData = await response.json();
-            setFoodList(jsonData.data?.cards[1]?.card.card.gridElements.infoWithStyle?.restaurants);
-            setSearchFoodList(jsonData.data?.cards[1]?.card.card.gridElements.infoWithStyle?.restaurants);
-            // console.log(jsonData.data?.cards[1]?.card.card.gridElements.infoWithStyle?.restaurants);
-        } catch (err) {
-            console.log(err);
+        const fetchSS= async () =>{
+        const data = await useFetchRestData();
+        setFoodList(data);
+        setSearchFoodList(data);       
         }
-    }
-
-    // if(foodList?.length === 0){
-    //     return(
-    //         <Shimmer />
-    //     );
-    // }
-
+        fetchSS();
+    }, []);
+    
     const searchFoodFunction = () => {
+        console.log(foodList);
         setSearchFoodList(foodList.filter(food => food.info.name.toLowerCase().includes(searchText.toLowerCase())))
     }
-    return foodList.length === 0 ? <Shimmer /> : (
+    return foodList?.length == 0 ? <Shimmer /> : (
         <div className="Food-container">
             <div className='food-bar'>
                 <input type="text" name={searchText} className='search-bar' onChange={(res) => {
@@ -48,15 +35,15 @@ function Container() {
                 }}
                 //  onKeyPress={searchFoodFunction}
                 />
-                <input type="button" value="search" className="search-btn"onClick={searchFoodFunction} />
+                {/* <input type="button" value="search" className="search-btn"onClick={searchFoodFunction} /> */}
             </div>
             <div className="food-con">
-                {searchFoodList.length > 0 ? (
-                    searchFoodList.map(food => (
-                        <Foodcard key={food?.info?.id} {...food} />
+                {searchFoodList?.length > 0 ? (
+                    searchFoodList?.map(food => (
+                         <Link key={food?.info?.id} to={"/rests/" + food?.info?.id } className='food-link'> <Foodcard {...food} /> </Link>
                     ))
                 ) : (
-                    foodList.length !== 0 && <h1>No Result Found</h1>
+                    foodList?.length !== 0 && <h1>No Result Found</h1>
                 )}
 
                 {/* {
