@@ -136,3 +136,21 @@
     background: #9cf14d;
     color: #fff;
 }
+.veg-data{
+    color: green;
+    display: absolute;
+}
+.veg-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.comingsoon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}

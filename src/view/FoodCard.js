@@ -9,10 +9,26 @@ function FoodCard(props) {
             </div>
             <dir className="text-card">
                 <h3>{info?.name}</h3>
+                {
+                    info?.veg ? <div>🍀</div> : <div></div>                    
+                }
                 <h1>{info?.avgRating}</h1>
             </dir>
         </div>
     )
+}
+
+// High Order Components
+
+export const withPromoteData = (FoodCard) =>{
+    return (props)=>{
+        return(
+            <div className='veg-card'>
+                <p className='veg-data'>Pure Veg</p>
+                <FoodCard {...props}/>
+            </div>
+        )
+    }
 }
 
 export default FoodCard

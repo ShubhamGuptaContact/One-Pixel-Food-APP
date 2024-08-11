@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import Foodcard from './FoodCard';
+import Foodcard, { withPromoteData } from './FoodCard';
 import Shimmer from './Shimmer';
 import {Link} from "react-router-dom"
 import useFetchRestData from '../api/useFetchRestData';
+import { dummyData } from './../utils/dummyData';
 function Container() {
 
     const [foodList, setFoodList] = useState([]);
     const [searchFoodList, setSearchFoodList] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const PromotedRestCard = withPromoteData(Foodcard);
 
     useEffect(() => {
         const fetchSS= async () =>{
-        const data = await useFetchRestData();
-        setFoodList(data);
-        setSearchFoodList(data);       
+            try{
+                const data = await useFetchRestData();
+                setFoodList(data);
+                setSearchFoodList(data);
+            }catch(err){
+                console.log(err);
+                alert("Failed to fetch data, please try again later || Show dummy data for some reason");
+            }    
         }
         fetchSS();
+        
     }, []);
     
     const searchFoodFunction = () => {
@@ -40,7 +48,16 @@ function Container() {
             <div className="food-con">
                 {searchFoodList?.length > 0 ? (
                     searchFoodList?.map(food => (
-                         <Link key={food?.info?.id} to={"/rests/" + food?.info?.id } className='food-link'> <Foodcard {...food} /> </Link>
+                         <Link key={food?.info?.id} to={"/rests/" + food?.info?.id } className='food-link'>
+                            {/* {
+                                console.log(food.info?.veg)
+                            }
+                            {   
+                                food?.info?.veg ? <PromotedRestCard {...food}/> :<Foodcard {...food} /> 
+                             
+                            } */}
+                            <Foodcard {...food} />
+                        </Link>
                     ))
                 ) : (
                     foodList?.length !== 0 && <h1>No Result Found</h1>

@@ -1,9 +1,10 @@
 import Header from '../view/Header.js';
 import Container from '../view/Container.js';
 
-import { createBrowserRouter, Outlet, useParams } from 'react-router-dom';
+import { createBrowserRouter, Link, Outlet, useParams } from 'react-router-dom';
 import { Rests } from '../view/Rests.js';
 import About from '../view/About.js';
+import Header from './../view/Header';
 
 
 export const FoodControl = () => {
@@ -37,7 +38,18 @@ export const appRouter = createBrowserRouter([
                 path: '/rests/:resId',
                 element: <Rests />
             }
-        ]
+        ],
+        errorElement: (
+
+            <div>
+                <Header />
+                <div className="comingsoon">
+                    <h1>Coming Soon ..............</h1>
+                    <h2><a href="/">😅</a></h2>
+                    
+                </div>
+            </div>
+    )
     }
 ]);
 
