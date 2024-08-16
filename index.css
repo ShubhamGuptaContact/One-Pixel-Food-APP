@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -7,13 +12,11 @@
 .header {
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid; */
-    background: #9cf14d3b;
 }
 
 .header .logo-image h1{
-    font-size: 35px;
-    padding: 3px;
+    height: 40px !important;
+    font-size: 30px;
 }
 
 .nav-items ul{
@@ -22,16 +25,14 @@
     align-items: end;
 }
 .nav-items ul .li{
-    padding: 5px 10px;
-    font-size: 30px;
     list-style: none;
     text-decoration: none;
-    color: #000;
+    
     /* background: #000; */
 }
 
 .nav-items ul .li:hover{
-    background: #9cf14d;
+    background: #581A0D;
     color: #fff;
 }
 
@@ -43,6 +44,7 @@
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
+    /* height: 300px; */
 }
 .food-card img{
     width: 100%;
@@ -66,6 +68,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 16px;
+    height:60px;
 }
 .food-bar{
     position: sticky;
@@ -77,13 +81,14 @@
 }
 .search-bar {
     width: 50%;
-    margin: 5px;
+    /* margin: 5px; */
     padding: 10px;
     padding: 0;
     background: #fff;
     height: 30px;
     overflow: hidden;
-    border-bottom: 1px solid rgba(40, 44, 63, .2);
+    border: 2px solid rgba(40, 44, 63, .2);
+    margin-top: 10px;
 }
 .dishes-cards{
     margin-top: 20px;
@@ -129,11 +134,11 @@
     color: #000;
 }
 .food-link:hover{
-    color: #9cf14d;
+    color: #5f02eb;
 }
 
 .active{
-    background: #9cf14d;
+    background: #E6A639;
     color: #fff;
 }
 .veg-data{

@@ -3,7 +3,6 @@ import Foodcard, { withPromoteData } from './FoodCard';
 import Shimmer from './Shimmer';
 import {Link} from "react-router-dom"
 import useFetchRestData from '../api/useFetchRestData';
-import { dummyData } from './../utils/dummyData';
 function Container() {
 
     const [foodList, setFoodList] = useState([]);
@@ -27,7 +26,7 @@ function Container() {
     }, []);
     
     const searchFoodFunction = () => {
-        console.log(foodList);
+        // console.log(foodList);
         setSearchFoodList(foodList.filter(food => food.info.name.toLowerCase().includes(searchText.toLowerCase())))
     }
     return foodList?.length == 0 ? <Shimmer /> : (

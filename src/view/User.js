@@ -7,15 +7,9 @@ class User extends Component {
             name: props.name,
             age: props.age,
         };
-        
-        
-
-
-
-
-
-        console.log(this.state)
-        console.log(this.props)
+                
+        // console.log(this.state)
+        // console.log(this.props)
     }
     render() {
         return (

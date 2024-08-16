@@ -10,7 +10,7 @@ import Header from './../view/Header';
 export const FoodControl = () => {
 
     const data = useParams();
-    console.log(data);
+    // console.log(data);
     return (
         <div className="app">
             <Header />
@@ -31,10 +31,7 @@ export const appRouter = createBrowserRouter([
             }, {
                 path: '/about',
                 element: <About />
-            }, {
-                path: '/contact',
-                element: <div>Contact Us Page</div>
-            }, {
+            },{
                 path: '/rests/:resId',
                 element: <Rests />
             }
@@ -46,7 +43,6 @@ export const appRouter = createBrowserRouter([
                 <div className="comingsoon">
                     <h1>Coming Soon ..............</h1>
                     <h2><a href="/">😅</a></h2>
-                    
                 </div>
             </div>
     )
