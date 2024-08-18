@@ -18,7 +18,7 @@ function Container() {
                 setSearchFoodList(data);
             }catch(err){
                 console.log(err);
-                alert("Failed to fetch data, please try again later || Show dummy data for some reason");
+                alert("Failed to fetch data, please try again later");
             }    
         }
         fetchSS();

@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 function Header() {
   const [activeTab, setActiveTab] = useState('/');
-
+  
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
+  // Subscribing to the redux store using selector hook  {useSelector}
+
+  const cartItems = useSelector(store => store.cart.items);
+  console.log(cartItems)
   return (
-    <div className="border-b-2 p-3 header shadow-lg bg-[#ebe5e5]">
+    <div className="border-b-2 top-0 sticky p-3 flex justify-between shadow-lg bg-[#ebe5e5]">
       <div>
-        <h1 className='text-xl'>FOA</h1>
+        <Link to='/'><h1 className='text-xl font-extrabold shadow-inner shadow-black p-1 bg-[#E6A639] text-white rounded'>One Pixel Food APP</h1>
+        </Link>
       </div>
 
       <div>
@@ -31,11 +36,11 @@ function Header() {
             About Us
           </Link>
           <Link 
-            className={`text-xl  px-4 ${activeTab === '/cart' ? 'active' : ''}`} 
+            className={`text-xl font-bold px-4 ${activeTab === '/cart' ? 'active' : ''}`} 
             to="/cart" 
             onClick={() => handleTabClick('/cart')}
           >
-            Cart
+            Cart🛒 ({cartItems.length} items)
           </Link>
         </ul>
       </div>
