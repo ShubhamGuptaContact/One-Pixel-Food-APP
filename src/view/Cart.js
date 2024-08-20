@@ -23,8 +23,8 @@ const Cart = () => {
 
   return (
     <div className="h-[90vh]">
-      <div className="text-2xl font-bold py-5 border-b-2 border-t-2 my-2 border-red-300 flex justify-between">
-        Cart
+      <div className="w-[50%] m-auto py-5 border-b-2 border-t-2 my-2 border-blue-400 flex justify-between ">
+        <h1 className="text-2xl m-auto font-bold">Cart</h1>
         <button
           className="border-2 p-2 text-sm rounded-xl border-black bg-[#000] text-[#fff] mx-4"
           onClick={handleClear}

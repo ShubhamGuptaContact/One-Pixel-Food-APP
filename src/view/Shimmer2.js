@@ -5,8 +5,8 @@ function Shimmer2() {
     return (
         <div className="bg-[#e7e1e13d]">
             <div className="text-center w-7/12 m-auto bg-white p-4">
-                <h2 className="text-3xl font-bold py-5 border-b-2 border-t-2 my-2 border-red-300"></h2>
-                <div className="flex justify-between my-2 border-red-300">
+                <h2 className="text-3xl font-bold py-5 border-b-2 border-t-2 my-2 border-blue-300"></h2>
+                <div className="flex justify-between my-2 border-blue-300">
                     <h3 className=""> </h3>
                     <h3 className="font-bold underline text-[#ff1c1c]"></h3>
                 </div>

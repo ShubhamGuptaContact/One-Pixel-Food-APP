@@ -1,24 +1,52 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { searchItem } from '../Redux/foodSlice';
+
 function Header() {
   const [activeTab, setActiveTab] = useState('/');
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
   
+  const { foodList, cartItems } = useSelector((state) => ({
+    foodList: state.food.foodList,
+    cartItems: state.cart.items,
+  }));
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  
+  const handleSearch = () => {
+    const filteredFoodList = foodList.filter(food => 
+      food.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    dispatch(searchItem(filteredFoodList));
+  };
 
-  // Subscribing to the redux store using selector hook  {useSelector}
+  const handleKeyPress = (event) => {
+    if (event.code === "Enter") {
+      handleSearch();
+    }
+  };
 
-  const cartItems = useSelector(store => store.cart.items);
-  console.log(cartItems)
   return (
-    <div className="border-b-2 top-0 sticky p-3 flex justify-between shadow-lg bg-[#ebe5e5]">
+    <div className="top-0 sticky p-3 flex justify-between shadow-2xl bg-[#ffffff] mb-2">
       <div>
-        <Link to='/'><h1 className='text-xl font-extrabold shadow-inner shadow-black p-1 bg-[#E6A639] text-white rounded'>One Pixel Food APP</h1>
+        <Link to='/'>
+          <h1 className='text-xl font-extrabold'>One Pixel Food APP</h1>
         </Link>
       </div>
-
+      <Link to='/'>
+      <input
+        type="text"
+        value={searchText}
+        className='search-bar'
+        placeholder="Search Resturants..."
+        onChange={(e) => setSearchText(e.target.value)}
+        onKeyDown={handleKeyPress}
+      />
+      </Link>
       <div>
         <ul className="flex justify-between align-middle">
           <Link 
@@ -28,19 +56,19 @@ function Header() {
           >
             Home
           </Link>
-          <Link 
-            className={`text-xl  px-4 ${activeTab === '/about' ? 'active' : ''}`} 
+          {/* <Link 
+            className={`text-xl px-4 ${activeTab === '/about' ? 'active' : ''}`} 
             to="/about" 
             onClick={() => handleTabClick('/about')}
           >
             About Us
-          </Link>
+          </Link> */}
           <Link 
             className={`text-xl font-bold px-4 ${activeTab === '/cart' ? 'active' : ''}`} 
             to="/cart" 
             onClick={() => handleTabClick('/cart')}
           >
-            Cart🛒 ({cartItems.length} items)
+            Cart 🛒 ({cartItems.length} items)
           </Link>
         </ul>
       </div>
@@ -49,6 +77,7 @@ function Header() {
 }
 
 export default Header;
+
 
 
 // import React from 'react'

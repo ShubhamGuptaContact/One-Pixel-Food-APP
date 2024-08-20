@@ -20,10 +20,13 @@ const Footer = () => {
     }, []);
 
     return (
-        <div className="border-b-2 p-2 shadow-lg bg-[#ebe5e5] flex justify-between sticky w-[100%] bottom-0">
+        <>
+        <hr />
+        <div className="border-b-2 p-2 shadow-2xl bg-[#ffffff] flex justify-between sticky w-[100%] bottom-0">
             <div className="text-left">© 2024 {LoggedInUser}. All rights reserved.</div>
-            <p className='font-extrabold shadow-xl shadow-black p-1 bg-[#E6A639] text-white rounded'>{dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()} IST</p>
+            <p className='font-extrabold'>{dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()} IST</p>
         </div>
+        </>
     );
 }
 

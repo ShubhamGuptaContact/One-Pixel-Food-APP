@@ -1,79 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import Foodcard, { withPromoteData } from './FoodCard';
 import Shimmer from './Shimmer';
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { searchItem, addItems } from '../Redux/foodSlice';
 import useFetchRestData from '../api/useFetchRestData';
+
 function Container() {
-
-    const [foodList, setFoodList] = useState([]);
-    const [searchFoodList, setSearchFoodList] = useState([]);
-    const [searchText, setSearchText] = useState("");
-    const PromotedRestCard = withPromoteData(Foodcard);
-
-    useEffect(() => {
-        const fetchSS= async () =>{
-            try{
-                const data = await useFetchRestData();
-                setFoodList(data);
-                setSearchFoodList(data);
-            }catch(err){
-                console.log(err);
-                alert("Failed to fetch data, please try again later");
-            }    
-        }
-        fetchSS();
-        
-    }, []);
+    const [loading, setLoading] = useState(true);
+    const searchFoodList = useSelector(state => state.food.searchList);
+    const dispatch = useDispatch();
     
-    const searchFoodFunction = () => {
-        // console.log(foodList);
-        setSearchFoodList(foodList.filter(food => food.info.name.toLowerCase().includes(searchText.toLowerCase())))
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await useFetchRestData();
+                dispatch(searchItem(data));
+                dispatch(addItems(data));
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                alert("Failed to fetch data, please try again later");
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [dispatch]);
+    
+    if (loading) {
+        return <Shimmer />;
     }
-    return foodList?.length == 0 ? <Shimmer /> : (
+
+    return (
         <div className="Food-container">
-            <div className='food-bar'>
-                <input type="text" name={searchText} className='search-bar' onChange={(res) => {
-                    setSearchText(res.target.value);
-                }} onKeyDownCapture={(res) => {
-                    console.log(res.code)
-                    if (res.code === "Enter") {
-                        searchFoodFunction()
-                    }
-                }}
-                //  onKeyPress={searchFoodFunction}
-                />
-                {/* <input type="button" value="search" className="search-btn"onClick={searchFoodFunction} /> */}
-            </div>
             <div className="food-con">
                 {searchFoodList?.length > 0 ? (
-                    searchFoodList?.map(food => (
-                         <Link key={food?.info?.id} to={"/rests/" + food?.info?.id } className='food-link'>
-                            {/* {
-                                console.log(food.info?.veg)
-                            }
-                            {   
-                                food?.info?.veg ? <PromotedRestCard {...food}/> :<Foodcard {...food} /> 
-                             
-                            } */}
+                    searchFoodList.map(food => (
+                        <Link 
+                            key={food?.info?.id} 
+                            to={"/rests/" + food?.info?.id} 
+                            className='food-link'
+                        >
                             <Foodcard {...food} />
                         </Link>
                     ))
                 ) : (
-                    foodList?.length !== 0 && <h1>No Result Found</h1>
+                    <h1>No Result Found</h1>
                 )}
-
-                {/* {
-                    searchFoodList.map(food => (
-                        <Foodcard key={food?.info?.id} {...food} />
-                    ))
-
-                    if (searchFoodList.length === 0 && foodList.length != 0){
-                        <h1>No Result Found</h1>
-                    }
-                } */}
             </div>
         </div>
-    )
+    );
 }
 
 export default Container;
