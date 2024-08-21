@@ -12,7 +12,7 @@ function FoodCard(props) {
                 {
                     info?.veg ? <div>🍀</div> : <div></div>                    
                 }
-                <h1>{info?.avgRating}</h1>
+                <h1>{info?.avgRating}🌟</h1>
             </dir>
         </div>
     )
