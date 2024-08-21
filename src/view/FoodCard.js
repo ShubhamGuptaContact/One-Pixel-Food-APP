@@ -8,7 +8,7 @@ function FoodCard(props) {
                 <img src={IMG_URL + info?.cloudinaryImageId} alt="img" />
             </div>
             <dir className="text-card">
-                <h3>{info?.name}</h3>
+                <h3 className='text-sm'>{info?.name}</h3>
                 {
                     info?.veg ? <div>🍀</div> : <div></div>                    
                 }
