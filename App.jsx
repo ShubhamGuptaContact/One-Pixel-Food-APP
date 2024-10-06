@@ -6,7 +6,6 @@ import { RouterProvider } from "react-router-dom";
 const AppComponent = () => {
     return (
         <div>
-            
         </div>
     )
 }
