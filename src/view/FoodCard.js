@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IMG_URL } from '../utils/constant'
 function FoodCard(props) {
     const { info } = props;
+
+    const [Toggle,setToggle] = useState(false); 
+    setToggle(true);
+
+
+    useEffect(
+        () => {
+            if(Toggle){
+                setTimeout(()=>{
+                    setToggle(false);
+                },3000);
+            }
+        },[Toggle]
+    )
+
     return (
         <div className="food-card">
             <div className="img">

@@ -22,7 +22,7 @@ const Footer = () => {
     return (
         <>
         <hr />
-        <div className="border-b-2 p-2 shadow-2xl bg-[#ffffff] flex justify-between sticky w-[100%] bottom-0">
+        <div className="border-b-2 p-2 shadow-2xl bg-[#ffffff] flex justify-between w-[100%] bottom-0 ">
             <div className="text-left">© 2024 {LoggedInUser}. All rights reserved.</div>
             <p className='font-extrabold'>{dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()} IST</p>
         </div>

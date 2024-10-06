@@ -11,4 +11,11 @@ const About = () =>{
     )
 }
 
+
+export const AB = () =>{
+    return (
+        <About />
+    );
+}
+
 export default About;

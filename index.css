@@ -58,6 +58,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 .load-card{
     background: #f0f0f0;
